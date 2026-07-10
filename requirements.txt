@@ -1,0 +1,8 @@
+streamlit>=1.36
+plotly>=5.22
+pandas>=2.2
+numpy>=1.26
+yfinance>=0.2.40
+# pyarrow 25.x segfaults inside Streamlit's script-rerun thread on macOS
+# (crash in pyarrow.lib during Arrow serialization); 21.x is verified clean.
+pyarrow>=14,<22
