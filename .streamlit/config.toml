@@ -1,0 +1,20 @@
+[theme]
+# Dark fintech palette
+#   Background        #0B0F19  (deep charcoal-navy)
+#   Panel / cards     #111827
+#   Accent (long/buy) #00D09C  (teal-green)
+#   Accent (short)    #FF5C7A  (coral-red)
+#   Text              #E6EAF2
+#   Muted gridlines   #1E2638
+base = "dark"
+primaryColor = "#00D09C"
+backgroundColor = "#0B0F19"
+secondaryBackgroundColor = "#111827"
+textColor = "#E6EAF2"
+font = "sans serif"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false
