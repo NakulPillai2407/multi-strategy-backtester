@@ -6,3 +6,8 @@ yfinance>=0.2.40
 # pyarrow 25.x segfaults inside Streamlit's script-rerun thread on macOS
 # (crash in pyarrow.lib during Arrow serialization); 21.x is verified clean.
 pyarrow>=14,<22
+# Sentiment Signal strategy: FinBERT scoring, VADER baseline, OLS diagnostics
+transformers>=4.42,<5.0
+torch>=2.2,<3.0
+nltk>=3.8,<4.0
+statsmodels>=0.14
