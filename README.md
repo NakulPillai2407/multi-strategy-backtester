@@ -12,6 +12,7 @@ Built as a portfolio project for Quantitative Analyst / Financial Technology rol
 - Walk-forward split into in-sample / out-of-sample windows, with rolling or expanding modes selectable in the sidebar
 - Regime overlay attributing net returns to market conditions
 - Animated equity curve and count-up metric cards in a dark, fintech-themed dashboard
+- Sentiment Signal strategy: FinBERT news scoring vs. a VADER baseline, event-study abnormal returns, and OLS diagnostics rendered through the engine's diagnostics hook
 
 ## Methodology
 
@@ -32,11 +33,11 @@ Implemented now:
 - Portfolio accounting and performance metrics (Sharpe, CAGR, drawdown, hit rate)
 - Flat basis-point cost model
 - Single fixed 70/30 walk-forward split
-- One strategy: a moving-average crossover, used to validate the pipeline end to end
+- Two strategies: a moving-average crossover used to validate the pipeline end to end, and a Sentiment Signal strategy (FinBERT news scoring, event-study abnormal returns, OLS diagnostics), ported from a standalone research app
 
 Planned next:
 
-- Stat Arb / Pairs Trading, Sentiment Signal, and Portfolio Optimiser strategies, each as its own module under `strategies/`
+- Stat Arb / Pairs Trading and Portfolio Optimiser strategies, each as its own module under `strategies/`
 - A market-impact cost model (square-root impact proportional to trade size vs. average daily volume)
 - A rolling/expanding walk-forward window generator with per-window parameter re-fitting
 - A volatility-tercile or Markov regime classifier in place of the constant label
@@ -57,7 +58,9 @@ Planned next:
 │   └── metrics.py                # Sharpe, drawdown, hit rate
 └── strategies/
     ├── __init__.py                # STRATEGY_REGISTRY
-    └── example_placeholder.py     # SMA crossover strategy
+    ├── example_placeholder.py     # SMA crossover strategy
+    ├── sentiment_signal.py        # Sentiment Signal strategy + diagnostics UI
+    └── _sentiment_utils.py        # News fetch, FinBERT/VADER scoring, event returns, OLS
 ```
 
 ## Installation & Running Locally
@@ -75,7 +78,7 @@ Then open the local URL Streamlit prints (typically http://localhost:8501).
 
 ## Tech Stack
 
-Python, Streamlit, Plotly, Pandas / NumPy, yfinance
+Python, Streamlit, Plotly, Pandas / NumPy, yfinance, transformers + torch (FinBERT), NLTK (VADER baseline), statsmodels (OLS diagnostics)
 
 ## Limitations
 
